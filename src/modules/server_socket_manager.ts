@@ -22,9 +22,8 @@ function doToAllSockets(f: FunctionOnAServerSocket){
   });
 }
 
-export function broadcastMessage(msg: string) {
+export function broadcastObject(object: any) {
   doToAllSockets(function (socket) {
-    console.log("Broadcasting:" + msg);
-    socket.send(msg);
+    socket.send(JSON.stringify(object));
   });
 }

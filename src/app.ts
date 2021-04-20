@@ -37,3 +37,5 @@ SocketManager.plugInstance(wsInstance);
 app.listen( port, () => {
   console.log( `[App] server started at http://localhost:${ port }` );
 } );
+
+require('./game.js');
