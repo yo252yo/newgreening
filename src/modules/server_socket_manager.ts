@@ -18,7 +18,11 @@ export function plugInstance (instance_:  expressWs.Instance){
 
 function doToAllSockets(f: FunctionOnAServerSocket){
   expressInstance.getWss().clients.forEach(function (socket:socketAPI) {
-    f(socket);
+    try{
+      f(socket);
+    } catch(e){
+      console.log(e);
+    }
   });
 }
 
