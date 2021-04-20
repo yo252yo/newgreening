@@ -41,7 +41,7 @@ var new_branch = function() {
 var grow_branch = function(i: number) {
   var b = FOREST[i];
   var leaf = b[b.length-1];
-  var newleaf=[];
+  var newleaf: number[]=[];
   var d = Math.random();
 
   if (Math.random() < 0.7){
@@ -68,12 +68,35 @@ var grow = function(){
     grow_branch(Math.floor(Math.random() * FOREST.length));
   }
 }
+var withdraw = function() {
+  var i = Math.floor(Math.random() * FOREST.length);
+  FOREST[i].pop();
+  if (FOREST[i].length == 0){
+    FOREST.splice(i,1);
+  }
+  if (FOREST.length == 0){
+    FOREST = [[ROOT]];
+  }
+}
 
 var evolve = function(){
-  grow();
-  console.log(FOREST.length);
+  var i = Math.random();
+  if (Math.abs(i - HOSPITABILITY) < 0.2){
+    console.log("=");
+  } else if (i < HOSPITABILITY) {
+    grow();
+    console.log("+");
+  } else {
+    withdraw();
+    console.log("-");
+  }
+}
+
+var changeHospitability = function(){
+  HOSPITABILITY = Math.random();
 }
 
 
+setInterval(changeHospitability, 1000);
 setInterval(evolve, 2);
 setInterval(broadcast, 100);
