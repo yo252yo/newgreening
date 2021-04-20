@@ -122,4 +122,4 @@ var changeHospitability = function(){
 
 setInterval(changeHospitability, 1000);
 setInterval(evolve, 5);
-setInterval(broadcast, 500);
+setInterval(broadcast, 100);
