@@ -100,9 +100,6 @@ var changeHospitability = function(){
   var diffload = -1 * (load - AVG_LOAD) / Math.max(1, AVG_LOAD);
   HOSPITABILITY *= 1.0 + 0.01 * diffload;
 
-  //console.log(`Load ${load} / ${AVG_LOAD} gives a coef of ${diffload} fot h=${HOSPITABILITY}`)
-
-
   // homeostasis
   var target = 0.5;
   if (FOREST.length < 30) {
@@ -114,6 +111,8 @@ var changeHospitability = function(){
   } else {
     HOSPITABILITY += 0.001 * (target - HOSPITABILITY);
   }
+
+  console.log(`h=${HOSPITABILITY}, load ${load} / ${AVG_LOAD} gives a coef of ${diffload}`);
 
 
   if (HOSPITABILITY < 0){ HOSPITABILITY = 0;}
