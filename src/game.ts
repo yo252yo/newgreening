@@ -98,13 +98,13 @@ var changeHospitability = function(){
   load *= (0.9 + Math.random() * 0.2); // random fluctuation of the load
 
   var diffload = -1 * (load - AVG_LOAD) / Math.max(1, AVG_LOAD);
-  HOSPITABILITY *= 1.0 + 0.01 * diffload;
+  HOSPITABILITY *= 1.0 + 0.05 * diffload;
 
   // homeostasis
   var target = 0.5;
-  if (FOREST.length < 30) {
+  if (FOREST.length < 25) {
     target = 1;
-    HOSPITABILITY += 0.005 * (target - HOSPITABILITY);
+    HOSPITABILITY += 0.05 * (target - HOSPITABILITY);
   } else if (FOREST.length > 50) {
     target = 0.3;
     HOSPITABILITY += 0.001 * (target - HOSPITABILITY);
