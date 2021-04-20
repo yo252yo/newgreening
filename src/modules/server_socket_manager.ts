@@ -27,3 +27,7 @@ export function broadcastObject(object: any) {
     socket.send(JSON.stringify(object));
   });
 }
+
+export function countVisitors(){
+  return expressInstance.getWss().clients.size;
+}

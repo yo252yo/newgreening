@@ -5,6 +5,7 @@ var SIZE = 200;
 var ROOT = [SIZE/2, SIZE-1];
 var FOREST = [[ROOT]];
 var HOSPITABILITY = 0.9;
+var AVG_LOAD = 0;
 
 
 var emptyBoard = function(){
@@ -82,21 +83,44 @@ var withdraw = function() {
 var evolve = function(){
   var i = Math.random();
   if (Math.abs(i - HOSPITABILITY) < 0.2){
-    console.log("=");
+    //console.log("=");
   } else if (i < HOSPITABILITY) {
     grow();
-    console.log("+");
+    //console.log("+");
   } else {
     withdraw();
-    console.log("-");
+    //console.log("-");
   }
 }
 
 var changeHospitability = function(){
-  HOSPITABILITY = Math.random();
+  var load = SocketManager.countVisitors();
+  load *= (0.9 + Math.random() * 0.2); // random fluctuation of the load
+
+  var diffload = -1 * (load - AVG_LOAD) / Math.max(1, AVG_LOAD);
+  HOSPITABILITY *= 1.0 + 0.1 * diffload;
+
+  //console.log(`Load ${load} / ${AVG_LOAD} gives a coef of ${diffload} fot h=${HOSPITABILITY}`)
+
+
+  // homeostasis
+  var target = 0.5;
+  if (FOREST.length < 30) {
+    target = 1;
+  }
+  if (FOREST.length > 50) {
+    target = 0.3;
+  }
+  HOSPITABILITY += 0.01 * (target - HOSPITABILITY);
+
+
+  if (HOSPITABILITY < 0){ HOSPITABILITY = 0;}
+  if (HOSPITABILITY > 1){ HOSPITABILITY = 1;}
+
+  AVG_LOAD = 0.95 * AVG_LOAD + 0.05 * load;
 }
 
 
-setInterval(changeHospitability, 1000);
+setInterval(changeHospitability, 200);
 setInterval(evolve, 2);
 setInterval(broadcast, 100);
