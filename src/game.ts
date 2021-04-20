@@ -120,7 +120,6 @@ var changeHospitability = function(){
   AVG_LOAD = 0.95 * AVG_LOAD + 0.05 * load;
 }
 
-
 setInterval(changeHospitability, 1000);
 setInterval(evolve, 5);
 setInterval(broadcast, 500);
