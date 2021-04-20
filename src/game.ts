@@ -107,11 +107,13 @@ var changeHospitability = function(){
   var target = 0.5;
   if (FOREST.length < 30) {
     target = 1;
-  }
-  if (FOREST.length > 50) {
+    HOSPITABILITY += 0.05 * (target - HOSPITABILITY);
+  } else if (FOREST.length > 50) {
     target = 0.3;
+    HOSPITABILITY += 0.01 * (target - HOSPITABILITY);
+  } else {
+    HOSPITABILITY += 0.01 * (target - HOSPITABILITY);
   }
-  HOSPITABILITY += 0.01 * (target - HOSPITABILITY);
 
 
   if (HOSPITABILITY < 0){ HOSPITABILITY = 0;}
