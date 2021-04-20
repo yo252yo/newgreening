@@ -1,4 +1,10 @@
-When deploying to a new environment, you might want to change
-bin/
-src/static/client/client_environment.js
-src/environment.ts
+See https://yo252yo.wordpress.com/2021/04/20/the-game-of-life-on-a-planet/
+
+Work realized for the Social Art Award 2021 “New Greening”.
+
+It is hosted at http://yo252yo.com:9090/ for now. I won’t host it forever but it will remain forever accessible on github.
+
+
+Technology, and AI in particular, are at the core of our hopeful prospects to manage and recover from the current climate crisis. But it is ultimately just a tool that is in the hand of humankind. This social art exhibition is the perfect moment to remember that our New Greening will have to be for everyone and by everyone. For even if there are macro forces at play, they are inextricably tied to individual responsibility.
+
+This interactive experience, hosted at http://yo252yo.com:9090/, showcases this interplay of forces with an aesthetic inspired by Conway’s Game of Life. This infinitely blooming virtual tree is sensitive to its environment: the more demand (eyeballs) placed on it, the darker the surroundings, and it may even wither. Are you ready to sacrifice your chance at the spectacle so that others may see it? Can the crowd find an equilibrium to allow for a lasting responsible growth?
