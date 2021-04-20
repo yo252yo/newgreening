@@ -1,0 +1,4 @@
+When deploying to a new environment, you might want to change
+bin/
+src/static/client/client_environment.js
+src/environment.ts

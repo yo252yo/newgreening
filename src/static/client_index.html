@@ -1,0 +1,15 @@
+<html>
+<head>
+<script src="/static/client/client_socket.js"></script>
+<script>
+const onload = function() {
+  var client_environment = document.createElement('script');
+  client_environment.setAttribute('src','/static/client/client_environment.js');
+  document.head.appendChild(client_environment);
+}
+</script>
+</head>
+<body onload="onload();">
+  <h1>Hey</h1>
+</body>
+</html>
