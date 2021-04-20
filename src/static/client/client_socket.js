@@ -1,15 +1,18 @@
 
-const paint = function(board) {
+const paint = function(object) {
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
   var pixel = 10;
 
+  var board = object.board;
+  var hospitability = Math.floor(256*object.hospitability);
+
   for(var i=0; i< board.length; i++){
   for(var j=0; j< board[i].length; j++){
-    if (board[i][j] < 0.5){
-      ctx.fillStyle = "red";
+    if (board[i][j]){
+      ctx.fillStyle = "green";
     } else{
-      ctx.fillStyle = 'rgba(255, 255, 255, 1)';
+      ctx.fillStyle = `rgba(${hospitability}, ${hospitability}, ${hospitability}, 1)`;
     }
     ctx.fillRect(0+pixel*i, 0+pixel*j, pixel, pixel);
   }}
@@ -27,7 +30,7 @@ class ClientSocket {
   static onReceivingObject(object) {
     console.log("Received object:" + object);
 
-    paint(object.board);
+    paint(object);
 
   }
 
