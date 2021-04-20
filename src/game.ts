@@ -118,7 +118,7 @@ var changeHospitability = function(){
   if (HOSPITABILITY < 0){ HOSPITABILITY = 0;}
   if (HOSPITABILITY > 1){ HOSPITABILITY = 1;}
 
-  AVG_LOAD = 0.98 * AVG_LOAD + 0.02 * load;
+  AVG_LOAD = 0.95 * AVG_LOAD + 0.05 * load;
 }
 
 setInterval(changeHospitability, 500);
