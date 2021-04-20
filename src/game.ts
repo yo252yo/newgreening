@@ -4,7 +4,7 @@ import * as SocketManager from './modules/server_socket_manager.js';
 var broadcast = function(){
   var board: boolean[][] = [];
 
-  var size = 400;
+  var size = 600;
 
   for(var i=0; i< size; i++){
     board[i] = [];
